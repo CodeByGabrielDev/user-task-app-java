@@ -55,5 +55,12 @@ public class Desenvolvedor extends Usuario implements ISubordinado {
 		}
 	}
 	
-	
-}
+	public static Gerente chamarGerente(String nomeGerente) {
+	    for (Usuario manager : Gerente.listUsuario) {
+	        if (manager.getName().equalsIgnoreCase(nomeGerente)) {
+	            return (Gerente) manager;
+	        }
+	    }
+	    return null;
+	}
+	}

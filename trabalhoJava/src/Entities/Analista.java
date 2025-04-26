@@ -76,4 +76,3 @@ public class Analista extends Usuario {
 	
 	
 }
-
