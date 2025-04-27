@@ -12,20 +12,19 @@ public class Tarefa {
 	private int id;
 	private String title;
 	private String desc;
-	private cargo cargo;
 	private prioridade prioridade;
 	private status stats;
 	private Usuario usuario;
+	private static List<cargo> listCargosResp = new ArrayList<>();
 	public static List<Tarefa> listTarefa = new ArrayList<>();
 
 	public Tarefa() {
 		this.id = novoId();
 	}
 
-	public Tarefa(String title, String desc, cargo cargo, prioridade prioridade, Usuario usuario) {
+	public Tarefa(String title, String desc, prioridade prioridade, Usuario usuario) {
 		this.title = title;
 		this.desc = desc;
-		this.cargo = cargo;
 		this.prioridade = prioridade;
 		this.stats = status.pendente;
 		this.usuario = usuario;
@@ -51,10 +50,6 @@ public class Tarefa {
 		if (stats == status.pendente) {
 			this.desc = desc;
 		}
-	}
-
-	public cargo getCargo() {
-		return cargo;
 	}
 
 	public prioridade getPrioridade() {
@@ -145,10 +140,13 @@ public class Tarefa {
 			stats = status.concluido;
 		}
 	}
-
+	public void addCargos(cargo cargo) {
+		listCargosResp.add(cargo);
+		
+	}
 	@Override
 	public String toString() {
-		return "id: " + this.id + "titulo " + this.title + "Descricao " + this.desc + " cargo" + this.cargo
+		return "id: " + this.id + "titulo " + this.title + "Descricao " + this.desc 
 				+ "prioridade: " + this.prioridade + " status " + this.stats;
 	}
 

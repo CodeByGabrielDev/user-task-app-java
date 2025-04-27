@@ -2,11 +2,9 @@ package Main;
 
 import java.util.Scanner;
 
-
 import Entities.*;
-import Enum.EspecialidadeAnalista;
-import Enum.StatusUsuario;
 import Enum.*;
+
 public class App {
 
 	public static void main(String[] args) {
@@ -32,7 +30,8 @@ public class App {
 
 				break;
 
-			default:
+			case 2:
+				createTask();
 				break;
 			}
 		} while (choice != 4);
@@ -55,10 +54,10 @@ public class App {
 				cadastrarAnalista();
 				break;
 
-			case 2 : 
+			case 2:
 				cadastrarGerente();
 				break;
-			
+
 			case 3:
 				cadastrarDev();
 			}
@@ -73,30 +72,38 @@ public class App {
 		System.out.println("Email: ");
 		String email = sc.nextLine();
 		int especialty = 1;
-
-		do {
-			System.out.println("what is the specialty");
-			System.out.println("1-System");
-			System.out.println("2-requirements");
-			System.out.println("3-Business");
-			System.out.println("4 - quality");
-			especialty = sc.nextInt();
-		} while (especialty > 4 || especialty < 1);
 		System.out.println("Who is the manager?");
-		Gerente manager = cadastrarGerente();
+		Gerente manager = chamarGerente();
 		sc.nextLine();
-		if (especialty == 1) {
-			Usuario analyst = new Analista(name, email, StatusUsuario.ativo, EspecialidadeAnalista.SISTEMA, manager);
-		}
-		if (especialty == 2) {
-			Usuario analyst = new Analista(name, email, StatusUsuario.ativo, EspecialidadeAnalista.REQUISITOS, manager);
-		}
-		if (especialty == 3) {
-			Usuario analyst = new Analista(name, email, StatusUsuario.ativo, EspecialidadeAnalista.NEGOCIO, manager);
-		}
-		if (especialty == 4) {
-			Usuario analyst = new Analista(name, email, StatusUsuario.ativo, EspecialidadeAnalista.QUALIDADE, manager);
-		}
+		Analista analyst = new Analista(name, email, StatusUsuario.ativo, manager);
+		do {
+			// Lembrar que pode possivelmente ter mais de uma especialidade, codar para
+			// ajustar isso.
+			System.out.println("how many especialty");
+			int quantity = sc.nextInt();
+			for (int i = 0; i < quantity; i++) {
+				System.out.println("what is the specialty");
+				System.out.println("1-System");
+				System.out.println("2-requirements");
+				System.out.println("3-Business");
+				System.out.println("4 - quality");
+				especialty = sc.nextInt();
+				if (especialty == 1) {
+					analyst.addEsp(EspecialidadeAnalista.SISTEMA);
+				}
+				if (especialty == 2) {
+					analyst.addEsp(EspecialidadeAnalista.REQUISITOS);
+				}
+				if (especialty == 3) {
+					analyst.addEsp(EspecialidadeAnalista.NEGOCIO);
+				}
+				if (especialty == 4) {
+					analyst.addEsp(EspecialidadeAnalista.QUALIDADE);
+				}
+			}
+
+		} while (especialty > 4 || especialty < 1);
+		System.out.println("Analyst addictioned with sucesseful");
 	}
 
 	public static Gerente cadastrarGerente() {
@@ -112,7 +119,7 @@ public class App {
 		String email = sc.nextLine();
 		return new Gerente(name, email, StatusUsuario.ativo);
 	}
-	
+
 	public static void cadastrarDev() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("write information please.");
@@ -121,53 +128,116 @@ public class App {
 		System.out.println("Email: ");
 		String email = sc.nextLine();
 		int specialty = 1;
+		Gerente manager = chamarGerente();
+		System.out.println("How many especialty");
+		int quantity = sc.nextInt();
+		Desenvolvedor dev = new Desenvolvedor(name, email, StatusUsuario.ativo, manager);
 		do {
-			System.out.println("what is the specialty");
-			System.out.println("1-Back-end");
-			System.out.println("2-Front-end");
-			System.out.println("3-FullStack");
-			System.out.println("4 - Banco De Dados");
-			specialty = sc.nextInt();
-			
-			Gerente manager = chamarGerente();
-			if(specialty == 1) {
-				Usuario Dev = new Desenvolvedor(name, email, StatusUsuario.ativo, EspecialidadeDev.BACKEND , manager);
-			}if(specialty == 2) {
-				Usuario Dev = new Desenvolvedor(name,email,StatusUsuario.ativo,EspecialidadeDev.FRONTEND,manager);
-			}if(specialty == 3) {
-				Usuario Dev = new Desenvolvedor(name,email,StatusUsuario.ativo,EspecialidadeDev.FULLSTACK,manager);
-			}if(specialty == 4) {
-				Usuario Dev = new Desenvolvedor(name,email,StatusUsuario.ativo,EspecialidadeDev.BANCODEDADOS,manager);
-			}else {
-				System.out.println("report a specialty that was illustrated");
+			for (int i = 0; i < quantity; i++) {
+				System.out.println("what is the specialty");
+				System.out.println("1-Back-end");
+				System.out.println("2-front-end");
+				System.out.println("3-fullstack");
+				System.out.println("4 - database");
+				specialty = sc.nextInt();
+				if (specialty == 1) {
+					dev.addEsp(EspecialidadeDev.BACKEND);
+				}
+				if (specialty == 2) {
+					dev.addEsp(EspecialidadeDev.FRONTEND);
+				}
+				if (specialty == 3) {
+					dev.addEsp(EspecialidadeDev.FULLSTACK);
+				}
+				if (specialty == 4) {
+					dev.addEsp(EspecialidadeDev.BANCODEDADOS);
+				}
+
 			}
-		}while(specialty > 4 || specialty < 1);
-		
-		
+		} while (specialty > 5 || specialty < 1);
+		System.out.println("Dev addictioned with sucessuful");
+
 	}
+
 	public static Gerente chamarGerente() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Do you want to inform a manager or register a new manager?");
 		System.out.println("1 - register");
 		System.out.println("2- inform");
 		int choice = sc.nextInt();
-		if(choice == 1) {
+		if (choice == 1) {
 			cadastrarGerente();
-		}if(choice == 2) {
+		}
+		if (choice == 2) {
 			System.out.println("inform the name of the manager");
 			String managerName = sc.next();
 			sc.nextLine();
 			Gerente manager = Desenvolvedor.chamarGerente(managerName);
-			if(manager == null) {
+			if (manager == null) {
 				System.out.println("not found");
 				System.out.println("register the manager");
 				Gerente manager2 = cadastrarGerente();
 				return manager2;
-				
+
 			}
 			return manager;
-			
+
 		}
 		return null;
+	}
+
+	public static void createTask() {
+		/*
+		 * private static int ultimoId; 
+		 * private String title; 
+		 * private String desc; 
+		 * list
+		 * com add private 
+		 * prioridade prioridade; 
+		 * private status stats; 
+		 * private Usuario usuario;
+		 */
+		Scanner sc = new Scanner(System.in);
+		System.out.println("enter the task title");
+		String title = sc.next();
+		System.out.println("Enter the description of task");
+		String desc = sc.next();
+		System.out.println("Who would be the User responsible for this task?");
+		
+		
+		
+		System.out.println("What would be the priority of this task?");
+		System.out.println("1 -urgent ");
+		System.out.println("2 - High");
+		System.out.println("3 - medium");
+		System.out.println("4- low");
+		int priority = 1;
+		do {
+			priority = sc.nextInt();
+			if(priority ==1) {
+				
+			}
+		}while(priority < 1 || priority >4);
+		
+		
+		
+		System.out.println("Which positions will be responsible for the task?");
+		int quantity = sc.nextInt();
+		int choice = 1;
+		do {
+
+			for (int i = 0; i < quantity; i++) {
+				System.out.println("What position would it be?");
+				System.out.println("1 - Analyst");
+				System.out.println("2 - Developer");
+				choice = sc.nextInt();
+			}
+
+		} while (choice > 2 || choice < 1);
+
+	}
+	public static void validarUsuario(Usuario usuario) {
+		
+		
 	}
 }

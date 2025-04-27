@@ -1,18 +1,20 @@
 package Entities;
 
 import Interfaces.ISubordinado;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import Enum.*;
 public class Desenvolvedor extends Usuario implements ISubordinado {
 	
 	
-	private EspecialidadeDev espDev;
 	private Gerente gerenteResp;
-
+	private static List<EspecialidadeDev> listEspecialidade = new ArrayList<>();
 	
 	
-	public Desenvolvedor(String name, String email, StatusUsuario stats, EspecialidadeDev espDev, Gerente gerenteResp) {
+	public Desenvolvedor(String name, String email, StatusUsuario stats, Gerente gerenteResp) {
 		super(name, email, stats);
-		this.espDev = espDev;
 		this.gerenteResp = gerenteResp;
 		super.setStats(StatusUsuario.ativo);
 	}
@@ -34,7 +36,12 @@ public class Desenvolvedor extends Usuario implements ISubordinado {
 			}
 		}
 	}
-
+	public void addEsp(EspecialidadeDev esp) {
+		if(super.getStats() == StatusUsuario.ativo) {
+			listEspecialidade.add(esp);
+		}
+		
+	}
 	
 	public void vincularGerente(Gerente gerente){
 		this.gerenteResp = gerente;

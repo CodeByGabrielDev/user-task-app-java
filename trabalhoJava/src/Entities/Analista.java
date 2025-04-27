@@ -1,17 +1,19 @@
 package Entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import Enum.*;
 
 public class Analista extends Usuario {
 	
 
-	private EspecialidadeAnalista espAnalista;
+	private static List<EspecialidadeAnalista>listEsp = new ArrayList<>();
 	private Gerente gerenteResp;
-
-	public Analista(String name, String email, StatusUsuario stats, EspecialidadeAnalista espAnalista,
+	
+	public Analista(String name, String email, StatusUsuario stats,
 			Gerente gerenteResp) {
 		super(name, email, stats);
-		this.espAnalista = espAnalista;
 		this.gerenteResp = gerenteResp;
 	}
 
@@ -20,14 +22,9 @@ public class Analista extends Usuario {
 		this.setStats(stats.ativo);
 
 	}
-
-	public EspecialidadeAnalista getEspAnalista() {
-		return espAnalista;
-	}
-
-	public void setEspAnalista(EspecialidadeAnalista espAnalista) {
-		if (super.getStats() == StatusUsuario.ativo) {
-			this.espAnalista = espAnalista;
+	public void addEsp(EspecialidadeAnalista esp) {
+		if(super.getStats() == StatusUsuario.ativo ) {
+			 listEsp.add(esp);
 		}
 	}
 
@@ -65,6 +62,7 @@ public class Analista extends Usuario {
 		}
 	}
 	
+
 	public void vincularGerente(Gerente gerente) {
 		this.gerenteResp = gerente;
 	}
