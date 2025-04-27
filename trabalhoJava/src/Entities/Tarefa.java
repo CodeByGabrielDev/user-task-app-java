@@ -144,6 +144,9 @@ public class Tarefa {
 		listCargosResp.add(cargo);
 		
 	}
+	
+	
+	
 	@Override
 	public String toString() {
 		return "id: " + this.id + "titulo " + this.title + "Descricao " + this.desc 

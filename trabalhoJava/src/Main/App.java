@@ -64,7 +64,7 @@ public class App {
 		} while (choice != 4);
 	}
 
-	public static void cadastrarAnalista() {
+	public static Analista cadastrarAnalista() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("write information please.");
 		System.out.println("Name:");
@@ -104,6 +104,7 @@ public class App {
 
 		} while (especialty > 4 || especialty < 1);
 		System.out.println("Analyst addictioned with sucesseful");
+		return analyst;
 	}
 
 	public static Gerente cadastrarGerente() {
@@ -120,7 +121,7 @@ public class App {
 		return new Gerente(name, email, StatusUsuario.ativo);
 	}
 
-	public static void cadastrarDev() {
+	public static Desenvolvedor cadastrarDev() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("write information please.");
 		System.out.println("Name:");
@@ -156,6 +157,7 @@ public class App {
 			}
 		} while (specialty > 5 || specialty < 1);
 		System.out.println("Dev addictioned with sucessuful");
+		return dev;
 
 	}
 
@@ -212,32 +214,69 @@ public class App {
 		System.out.println("3 - medium");
 		System.out.println("4- low");
 		int priority = 1;
+		priority = sc.nextInt();
 		do {
-			priority = sc.nextInt();
+			switch (priority) {
+			case 1:	
 			if(priority ==1) {
+				System.out.println("Which positions will be responsible for the task?");
+				int quantity = sc.nextInt();
+				int choice = 1;
+				do {
+
+					for (int i = 0; i < quantity; i++) {
+						System.out.println("What position would it be?");
+						System.out.println("1 - Analyst");
+						System.out.println("2 - Developer");
+						choice = sc.nextInt();
+						/*
+						 * private static int ultimoId; 
+						 * private String title; 
+						 * private String desc; 
+						 * list
+						 * com add private 
+						 * prioridade prioridade; 
+						 * private status stats; 
+						 * private Usuario usuario;
+						 */
+						if(choice == 1) {
+							System.out.println("Do you want to link a user or create a user and link it?");
+							System.out.println("1 - Create");
+							System.out.println("2 - link");
+							int a = sc.nextInt();
+									if(a == 1) {
+										Usuario analista = cadastrarAnalista();
+										Tarefa task = new Tarefa(title,desc,prioridade.urgente,analista);
+										task.vincularUsuario(analista);
+										
+									}if(choice == 2) {
+										System.out.println("What is the username?");
+										String name = sc.next();
+										sc.nextLine();
+										Usuario userFound = Usuario.encontrarUsuario(name);
+										Tarefa task = new Tarefa(title,desc,prioridade.urgente,userFound);
+										task.vincularUsuario(userFound);
+									}
+						}if(choice == 2) {
+							
+						}
+					}
+
+				} while (choice > 2 || choice < 1);
 				
+			}
+				
+				break;
+
+			default:
+				break;
 			}
 		}while(priority < 1 || priority >4);
 		
+	}
 		
 		
-		System.out.println("Which positions will be responsible for the task?");
-		int quantity = sc.nextInt();
-		int choice = 1;
-		do {
-
-			for (int i = 0; i < quantity; i++) {
-				System.out.println("What position would it be?");
-				System.out.println("1 - Analyst");
-				System.out.println("2 - Developer");
-				choice = sc.nextInt();
-			}
-
-		} while (choice > 2 || choice < 1);
 
 	}
-	public static void validarUsuario(Usuario usuario) {
-		
-		
-	}
-}
+	
+

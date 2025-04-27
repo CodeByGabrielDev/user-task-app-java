@@ -74,6 +74,16 @@ public abstract class Usuario {
 	}
 	
 	
+	public static Usuario encontrarUsuario(String name) {
+		for(Usuario list:listUsuario) {
+			if(list.getName().equalsIgnoreCase(name)) {
+				return list;
+			}
+		}
+		return null;
+	}
+	
+	
 	
 	public abstract void visualizarTarefas();
 	public abstract Gerente getGerenteResp();
