@@ -2,29 +2,37 @@
 
 ## Status do Projeto
 
-**Este projeto está em desenvolvimento.** Embora as classes principais do projeto já estejam completas, a implementação da **`main`** ainda não foi finalizada. O projeto está em fase de testes e pode não estar completamente executável neste momento. O objetivo do repositório é demonstrar o progresso do projeto, e ele está sendo constantemente atualizado.
+**Este projeto está em desenvolvimento.** A aplicação já conta com uma implementação funcional da classe `main`, permitindo o cadastro de usuários e criação de tarefas via console. No entanto, ainda existem funcionalidades a serem refinadas e implementadas, como listagem de tarefas, melhorias no fluxo de navegação e persistência de dados.
 
 ### Funcionalidades implementadas até o momento:
-- Cadastro de usuários (Analista, Gerente, Desenvolvedor).
-- Criação e visualização de tarefas.
-- Definição de especialidades para os usuários (ex: Analista de Sistema, Analista de Requisitos).
-  
+- Cadastro de usuários:
+  - **Gerente**
+  - **Desenvolvedor** (com múltiplas especialidades)
+  - **Analista** (com múltiplas especialidades)
+- Associação de usuários a tarefas.
+- Criação de tarefas com:
+  - Título
+  - Descrição
+  - Prioridade (Urgente, Alta, Média, Baixa)
+  - Vinculação a usuários já existentes ou recém-criados
+- Menu interativo via console
+
 ### O que falta:
-- Implementação da classe `main` para rodar a aplicação.
-- Conectar as funcionalidades para um fluxo completo do sistema.
-- Testes e melhorias de desempenho.
-- Algumas melhorias na interface (opcional).
+- Implementação da funcionalidade **"Listar tarefas"** no menu principal.
+- Persistência de dados (arquivo ou banco de dados).
+- Melhorias na modularização e reaproveitamento de código.
+- Validações mais robustas (ex: evitar `NullPointerException`, validar inputs).
+- Melhor experiência de usuário na linha de comando (ex: menus mais claros, evitar repetições de entrada).
 
 ### Aviso:
-O projeto está **em fase de testes**. Embora as classes principais já tenham sido implementadas, a aplicação pode não ser completamente executável até que a classe `main` e a integração completa das funcionalidades sejam finalizadas.
+O projeto já possui fluxo funcional, mas ainda está **em fase de testes** e pode gerar comportamentos inesperados em determinados fluxos de execução. Novas atualizações serão feitas para estabilizar o código e refinar as funcionalidades.
 
-### Como rodar
+## Como rodar
 
-#### Pré-requisitos:
-- Java 8 ou superior.
+### Pré-requisitos:
+- Java 8 ou superior instalado
 
-#### Rodando o projeto:
-Clone o repositório e, enquanto a classe `main` não estiver implementada, você pode verificar o funcionamento das classes e funcionalidades em partes. No entanto, **não garante-se que o projeto funcione perfeitamente devido à fase de testes**.
-
-**Aviso:** O projeto ainda não tem a funcionalidade principal de execução (`main`). Ele está em desenvolvimento para futuras implementações.
-
+### Passos:
+1. Clone este repositório:
+   ```bash
+   git clone https://github.com/seu-usuario/UserTaskApp.git
