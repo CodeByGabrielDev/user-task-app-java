@@ -79,10 +79,10 @@ public class App {
 		do {
 			// Lembrar que pode possivelmente ter mais de uma especialidade, codar para
 			// ajustar isso.
-			System.out.println("how many especialty");
+			System.out.println("how many specialties the analyst will have");
 			int quantity = sc.nextInt();
 			for (int i = 0; i < quantity; i++) {
-				System.out.println("what is the specialty");
+				System.out.println("how many specialties the analyst will have");
 				System.out.println("1-System");
 				System.out.println("2-requirements");
 				System.out.println("3-Business");
@@ -135,7 +135,7 @@ public class App {
 		Desenvolvedor dev = new Desenvolvedor(name, email, StatusUsuario.ativo, manager);
 		do {
 			for (int i = 0; i < quantity; i++) {
-				System.out.println("what is the specialty");
+				System.out.println("how many specialties the developer will have");
 				System.out.println("1-Back-end");
 				System.out.println("2-front-end");
 				System.out.println("3-fullstack");
@@ -190,12 +190,12 @@ public class App {
 
 	public static void createTask() {
 		/*
-		 * private static int ultimoId; 
-		 * private String title; 
-		 * private String desc; 
-		 * list
-		 * com add private 
-		 * prioridade prioridade; 
+		 * private static int ultimoId;
+		 *  private String title; 
+		 *  private String desc; 
+		 *  list
+		 * com add 
+		 * private prioridade prioridade; 
 		 * private status stats; 
 		 * private Usuario usuario;
 		 */
@@ -204,79 +204,59 @@ public class App {
 		String title = sc.next();
 		System.out.println("Enter the description of task");
 		String desc = sc.next();
-		System.out.println("Who would be the User responsible for this task?");
-		
-		
-		
+		sc.nextLine();
 		System.out.println("What would be the priority of this task?");
 		System.out.println("1 -urgent ");
 		System.out.println("2 - High");
 		System.out.println("3 - medium");
 		System.out.println("4- low");
-		int priority = 1;
-		priority = sc.nextInt();
-		do {
-			switch (priority) {
-			case 1:	
-			if(priority ==1) {
-				System.out.println("Which positions will be responsible for the task?");
-				int quantity = sc.nextInt();
-				int choice = 1;
-				do {
-
-					for (int i = 0; i < quantity; i++) {
-						System.out.println("What position would it be?");
-						System.out.println("1 - Analyst");
-						System.out.println("2 - Developer");
-						choice = sc.nextInt();
-						/*
-						 * private static int ultimoId; 
-						 * private String title; 
-						 * private String desc; 
-						 * list
-						 * com add private 
-						 * prioridade prioridade; 
-						 * private status stats; 
-						 * private Usuario usuario;
-						 */
-						if(choice == 1) {
-							System.out.println("Do you want to link a user or create a user and link it?");
-							System.out.println("1 - Create");
-							System.out.println("2 - link");
-							int a = sc.nextInt();
-									if(a == 1) {
-										Usuario analista = cadastrarAnalista();
-										Tarefa task = new Tarefa(title,desc,prioridade.urgente,analista);
-										task.vincularUsuario(analista);
-										
-									}if(choice == 2) {
-										System.out.println("What is the username?");
-										String name = sc.next();
-										sc.nextLine();
-										Usuario userFound = Usuario.encontrarUsuario(name);
-										Tarefa task = new Tarefa(title,desc,prioridade.urgente,userFound);
-										task.vincularUsuario(userFound);
-									}
-						}if(choice == 2) {
-							
-						}
+		int escolha = sc.nextInt();
+		prioridade priority = prioridade.baixa;
+		
+		switch (escolha) {
+		case 1:
+			priority = prioridade.urgente;
+			break;
+			
+		case 2:
+			priority = prioridade.alta;
+			break;
+			
+		case 3:
+			priority = prioridade.media;
+			break;
+		case 4:
+			priority = prioridade.baixa;
+		}
+		System.out.println("Do you want to link a user or create a user and link it?");
+		System.out.println("1 - Create");
+		System.out.println("2 - link");
+		int a = sc.nextInt();
+				if(a == 1) {
+					Usuario developer = cadastrarDev();
+					Tarefa task = new Tarefa(title,desc,priority,developer);
+					task.vincularUsuario(developer);
+					
+				}if(a == 2) {
+					try {
+					System.out.println("What is the username?");
+					String name = sc.next();
+					sc.nextLine();
+					Usuario userFound = Usuario.encontrarUsuario(name);
+					Tarefa task = new Tarefa(title,desc,priority,userFound);
+					task.vincularUsuario(userFound);
+					}catch(NullPointerException e) {
+						System.out.println("User not found, please create one");
+						Usuario developer = cadastrarDev();
+						Tarefa task = new Tarefa(title,desc,priority,developer);
+						task.vincularUsuario(developer);
 					}
-
-				} while (choice > 2 || choice < 1);
-				
-			}
-				
-				break;
-
-			default:
-				break;
-			}
-		}while(priority < 1 || priority >4);
-		
-	}
-		
-		
-
+				}
 	}
 	
+	
+	public static void listTask() {
+		
+	}
 
+}

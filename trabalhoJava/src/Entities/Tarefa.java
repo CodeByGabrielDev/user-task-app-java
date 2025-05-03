@@ -105,7 +105,7 @@ public class Tarefa {
 
 	}
 
-	public void exportarPorDesenvolvedor(String aux) {
+	public  void exportarPorDesenvolvedor(Usuario aux) {
 		boolean found = false;
 		for (Tarefa task : listTarefa) {
 			if (task.getUsuario().equals(aux)) {
