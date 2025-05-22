@@ -2,7 +2,7 @@
 
 ## Status do Projeto
 
-**Este projeto está em desenvolvimento.** A aplicação já conta com uma implementação funcional da classe `main`, permitindo o cadastro de usuários e criação de tarefas via console. No entanto, ainda existem funcionalidades a serem refinadas e implementadas, como listagem de tarefas, melhorias no fluxo de navegação e persistência de dados.
+**Este projeto está em desenvolvimento.**(Em analise de outro projeto por conta da faculdade), implementando em paralelo de outro projeto. A aplicação já conta com uma implementação funcional da classe `main`, permitindo o cadastro de usuários e criação de tarefas via console. No entanto, ainda existem funcionalidades a serem refinadas e implementadas, como listagem de tarefas, melhorias no fluxo de navegação e persistência de dados.
 
 ### Funcionalidades implementadas até o momento:
 - Cadastro de usuários:
@@ -19,7 +19,6 @@
 
 ### O que falta:
 - Implementação da funcionalidade **"Listar tarefas"** no menu principal.
-- Persistência de dados (arquivo ou banco de dados).
 - Melhorias na modularização e reaproveitamento de código.
 - Validações mais robustas (ex: evitar `NullPointerException`, validar inputs).
 - Melhor experiência de usuário na linha de comando (ex: menus mais claros, evitar repetições de entrada).
