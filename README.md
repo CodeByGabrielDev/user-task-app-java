@@ -1,37 +1,50 @@
-# User Task App - Java
+User Task App - Java
+📌 Status do Projeto
+Finalizado.
+Este é um projeto simples de gerenciamento de tarefas via console, desenvolvido em Java. Apesar de a funcionalidade de "Listar Tarefas" no menu principal não ter sido implementada, o restante do sistema está funcionando corretamente. O projeto não receberá novas atualizações, pois o foco atual está no desenvolvimento de uma versão mais robusta, com integração a banco de dados em Java puro.
 
-## Status do Projeto
+✅ Funcionalidades Implementadas
+Cadastro de usuários:
 
-**Este projeto está em desenvolvimento.**(Em analise de outro projeto por conta da faculdade), implementando em paralelo de outro projeto. A aplicação já conta com uma implementação funcional da classe `main`, permitindo o cadastro de usuários e criação de tarefas via console. No entanto, ainda existem funcionalidades a serem refinadas e implementadas, como listagem de tarefas, melhorias no fluxo de navegação e persistência de dados.
+Gerente
 
-### Funcionalidades implementadas até o momento:
-- Cadastro de usuários:
-  - **Gerente**
-  - **Desenvolvedor** (com múltiplas especialidades)
-  - **Analista** (com múltiplas especialidades)
-- Associação de usuários a tarefas.
-- Criação de tarefas com:
-  - Título
-  - Descrição
-  - Prioridade (Urgente, Alta, Média, Baixa)
-  - Vinculação a usuários já existentes ou recém-criados
-- Menu interativo via console
+Desenvolvedor (com múltiplas especialidades)
 
-### O que falta:
-- Implementação da funcionalidade **"Listar tarefas"** no menu principal.
-- Melhorias na modularização e reaproveitamento de código.
-- Validações mais robustas (ex: evitar `NullPointerException`, validar inputs).
-- Melhor experiência de usuário na linha de comando (ex: menus mais claros, evitar repetições de entrada).
+Analista (com múltiplas especialidades)
 
-### Aviso:
-O projeto já possui fluxo funcional, mas ainda está **em fase de testes** e pode gerar comportamentos inesperados em determinados fluxos de execução. Novas atualizações serão feitas para estabilizar o código e refinar as funcionalidades.
+Associação de usuários a tarefas
 
-## Como rodar
+Criação de tarefas com:
 
-### Pré-requisitos:
-- Java 8 ou superior instalado
+Título
 
-### Passos:
-1. Clone este repositório:
-   ```bash
-   git clone https://github.com/seu-usuario/UserTaskApp.git
+Descrição
+
+Prioridade (Urgente, Alta, Média, Baixa)
+
+Associação a usuários existentes ou recém-criados
+
+Menu interativo via console
+
+⚠️ Funcionalidade Pendente
+Listagem de tarefas (não será implementada nesta versão)
+
+📝 Observações
+A aplicação funciona exclusivamente via linha de comando.
+
+Não há persistência de dados: todas as informações existem apenas durante a execução.
+
+Pode haver pequenos comportamentos inesperados em fluxos menos testados.
+
+▶️ Como Rodar
+Pré-requisitos
+Java 8 ou superior instalado na máquina
+
+Passos
+Clone o repositório:
+
+bash
+Copiar
+Editar
+git clone https://github.com/seu-usuario/UserTaskApp.git
+Compile e execute o projeto via terminal ou utilizando uma IDE de sua preferência.
